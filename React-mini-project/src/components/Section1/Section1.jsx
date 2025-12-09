@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 
 const Section1 = () => {
   return (
-    <div className='h-screen w-screen bg-amber-700'>
+    <div className='h-screen w-screen'>
       <Navbar />
     </div>
   )
