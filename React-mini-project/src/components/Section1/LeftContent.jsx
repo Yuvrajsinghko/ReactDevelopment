@@ -3,7 +3,7 @@ const LeftContent = () => {
   return (
     <div className="h-full p-4 flex flex-col justify-between w-1/3">
       <div>
-        <h3 className="text-5xl mb-15 font-bold  ">
+        <h3 className="text-7xl mb-15 font-bold  ">
           Prospective <br />
           Customer <br />
           segmentation
@@ -17,7 +17,7 @@ const LeftContent = () => {
         </p>
       </div>
       <div className="text-7xl">
-        <i class="ri-arrow-right-up-line"></i>
+        <i className="ri-arrow-right-up-line"></i>
       </div>
     </div>
   );
