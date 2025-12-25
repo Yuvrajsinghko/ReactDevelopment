@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { CircleX } from "lucide-react";
 const App = () => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
@@ -10,17 +10,20 @@ const App = () => {
     e.preventDefault();
     const cpyTask = [...task];
 
-    cpyTask.push({title,details})
-    setTask(cpyTask)
-    
-    
+    cpyTask.push({ title, details });
+    setTask(cpyTask);
 
     setTitle("");
     setDetails("");
   };
 
-  
-  
+  const handleDelete = (noteId) => {
+    const cpyTask = [...task];
+
+    cpyTask.splice(noteId, 1);
+    setTask(cpyTask);
+  };
+
   return (
     <div className="min-h-screen flex gap-54 p-19 bg-black">
       <form
@@ -54,11 +57,26 @@ const App = () => {
       <div className="flex flex-col gap-10 border-l-2 border-amber-600 px-10">
         <h1 className="text-teal-600 font-extrabold text-4xl">Your Notes</h1>
         <div className="flex gap-5 flex-wrap">
-          {task.map((elem,idx)=><div key={idx} className="h-65 w-59 rounded-3xl p-2 bg-cyan-800">
-            <h2 className="text-center text-4xl font-bold border-b-2 border-b-cyan-300 text-amber-500 mb-7">{elem.title}</h2>
-            <p className="text-2xl font-medium">{elem.details}</p>
-          </div>)}
-          
+          {task.map((elem, idx) => (
+            <div
+              key={idx}
+              className="h-65 w-59 rounded-3xl p-2 bg-cover flex flex-col justify-between items-start  bg-center bg-[url('/note.jpeg')]"
+            >
+              <h2 className="text-center text-4xl font-bold border-b-2 border-b-cyan-300 text-amber-700 mb-7">
+                {elem.title}
+              </h2>
+
+              <p className="text-2xl leading-relaxed font-medium">
+                {elem.details}
+              </p>
+              <button
+                onClick={() => handleDelete(idx)}
+                className="rounded-3xl bg-amber-600 cursor-pointer p-2 font-bold"
+              >
+                Delete note
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>
