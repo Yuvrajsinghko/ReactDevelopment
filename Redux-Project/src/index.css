@@ -1,5 +1,17 @@
 body{
   background-color: #333;
-  font-size: 4vw;
   
+  
+}
+
+h1{
+  font-size: 5vw;
+  color: papayawhip;
+  margin-left: 5vw;
+}
+
+button,input{
+  padding: 1vw 2vw;
+  font-size: 2vw;
+  margin: 5vw;
 }
