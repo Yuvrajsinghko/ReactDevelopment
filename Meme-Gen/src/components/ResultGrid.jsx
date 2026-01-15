@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPhotos, fetchVideos, fetchGIFs } from "../api/mediaApi";
-
+import ResultCard from "./ResultCard";
 import {
   setQuery,
   setLoading,
@@ -30,6 +30,7 @@ const ResultGrid = () => {
               title: item.alt_description,
               thumbnail: item.urls.small,
               src: item.urls.full,
+              url: item.links.html,
             }));
           }
           if (activeTab == "videos") {
@@ -40,6 +41,7 @@ const ResultGrid = () => {
               title: item.user.name || "video",
               thumbnail: item.image,
               src: item.video_files[2].link,
+              url: item.url,
             }));
           }
           if (activeTab == "gif") {
@@ -50,6 +52,7 @@ const ResultGrid = () => {
               thumbnail: item.media_formats.tinygif.url,
               type: "gif",
               src: item.media_formats.gif.url,
+              url: item.url,
             }));
           }
           dispatch(setResults(data));
@@ -59,14 +62,18 @@ const ResultGrid = () => {
       };
       getData();
     },
-    [query, activeTab]
+    [query, activeTab, dispatch]
   );
   if (error) return <h1>Error</h1>;
   if (loading) return <h1>Loading...</h1>;
   return (
-    <div>
+    <div className="flex justify-center w-full flex-wrap gap-6 overflow-auto px-10">
       {results.map((item, idx) => {
-        return <h1 key={idx}>{item.title}</h1>;
+        return (
+          <h1 key={idx}>
+            <ResultCard item={item} />
+          </h1>
+        );
       })}
     </div>
   );

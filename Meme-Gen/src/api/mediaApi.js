@@ -12,7 +12,7 @@ export async function fetchPhotos(query, page = 1, per_page = 20) {
   return response.data;
 }
 
-export async function fetchVideos(query, page = 1, per_page = 10) {
+export async function fetchVideos(query, page = 1, per_page = 20) {
   const res = await axios.get("https://api.pexels.com/videos/search", {
     params: { query, page, per_page },
     headers: { Authorization: PEXELS_KEY },
