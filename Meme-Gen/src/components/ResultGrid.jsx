@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPhotos, fetchVideos, fetchGIFs } from "../api/mediaApi";
 import ResultCard from "./ResultCard";
 import {
-  setQuery,
   setLoading,
   setError,
   setResults,
@@ -29,9 +28,11 @@ const ResultGrid = () => {
               type: "photo",
               title: item.alt_description,
               thumbnail: item.urls.small,
-              src: item.urls.full,
+              src: item.urls.regular,
               url: item.links.html,
             }));
+            
+            
           }
           if (activeTab == "videos") {
             let response = await fetchVideos(query);
@@ -40,7 +41,7 @@ const ResultGrid = () => {
               type: "video",
               title: item.user.name || "video",
               thumbnail: item.image,
-              src: item.video_files[2].link,
+              src: item.video_files[0].link,
               url: item.url,
             }));
           }
@@ -65,7 +66,9 @@ const ResultGrid = () => {
     [query, activeTab, dispatch]
   );
   if (error) return <h1>Error</h1>;
-  if (loading) return <h1>Loading...</h1>;
+
+  if (loading) return <div>...</div>;
+
   return (
     <div className="flex justify-center w-full flex-wrap gap-6 overflow-auto px-10">
       {results.map((item, idx) => {

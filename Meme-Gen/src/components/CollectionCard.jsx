@@ -1,14 +1,16 @@
-import { useDispatch } from "react-redux";
-import { addCollection, addedToast } from "../redux/features/collectionSlice";
 import { useState } from "react";
 import { RotatingTriangles } from "react-loader-spinner";
+import { useDispatch } from "react-redux";
+import { removeCollection, removeToast } from "../redux/features/collectionSlice";
 
-const ResultCard = ({ item }) => {
-  const dispatch = useDispatch();
+const CollectionCard = ({ item }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const addToCollection = (item) => {
-    dispatch(addCollection(item));
-    dispatch(addedToast());
+
+  const disptach = useDispatch();
+
+  const removeFromCollection = (item) => {
+    disptach(removeCollection(item.id));
+    disptach(removeToast())
   };
   return (
     <div className="w-[18vw] h-80 relative rounded">
@@ -108,15 +110,15 @@ const ResultCard = ({ item }) => {
         </h2>
         <button
           onClick={() => {
-            addToCollection(item);
+            removeFromCollection(item);
           }}
           className="bg-indigo-600 active:scale-95 text-orange-200 px-3 py-1 font-medium rounded-2xl"
         >
-          Save
+          Remove
         </button>
       </div>
     </div>
   );
 };
 
-export default ResultCard;
+export default CollectionCard;
