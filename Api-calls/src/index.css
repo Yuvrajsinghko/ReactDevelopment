@@ -1,18 +1,17 @@
 body{
   background-color: #333;
-  font-size: 4vw;
+ 
 }
 
-button{
-  border:solid 2px white;
-  font-size: 5vh;
-  padding: 1vw;
-  background-color: darkgoldenrod;
+.nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background-color: aquamarine;
+  font-size: 2vh;
 }
-
-img{
-  height: 500px;
-  width: 500px;
-  object-fit: cover;
-  
+.nav2{
+  display: flex;
+  gap: 1.5vw;
+  align-items: center;
 }
