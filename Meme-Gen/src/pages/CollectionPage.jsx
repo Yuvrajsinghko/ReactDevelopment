@@ -31,7 +31,7 @@ const CollectionPage = () => {
               </button>
             </>
           ) : (
-            <h2>Add some videos,GIF's to your collection</h2>
+            <h2 className="font-bold text-2xl">Add some videos,GIF's to your collection</h2>
           )}
         </div>
       </div>
