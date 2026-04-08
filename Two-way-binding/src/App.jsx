@@ -1,33 +1,30 @@
-import React, { useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useRef } from "react";
 
 const App = () => {
-  const [name, setname] = useState("");
+  // const boxRef  = useRef();
 
-  let submitHandler = (e) => {
-    e.preventDefault();
-    console.log(`submit Handler has triggered:${name}`);
-    setname('')
-  };
-  
+  // useGSAP(() => {
+  //   gsap.from(boxRef.current, {
+      
+  //     duration: 2,
+  //     rotate: 720,
+  //     delay: 1,
+  //   });
+  // });
+
   return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          submitHandler(e);
-        }}
-      >
-        <input
-          type="text"
-          placeholder="Enter you name"
-          value={name}
-          onChange={(event) => {
-            setname(event.target.value);
-          }}
-        />
-        <br />
-        <button>Submit</button>
-      </form>
-    </div>
+    <main className="flex items-center justify-center w-full gap-10 min-h-screen">
+      <div className="container flex flex-col items-center w-full">
+        <div className="box h-55 w-65 bg-amber-600 rounded-3xl mt-5"></div>
+        <div className="circle box h-65 w-65 bg-amber-700 rounded-full mt-5"></div>
+      </div>
+      <div className="container flex flex-col items-center w-full">
+        <div className="box h-55 w-65 bg-cyan-500 rounded-3xl mt-5"></div>
+        <div className="circle box h-65 w-65 bg-cyan-600 rounded-full mt-5"></div>
+      </div>
+    </main>
   );
 };
 

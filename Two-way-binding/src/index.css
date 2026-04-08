@@ -1,19 +1,5 @@
 @import "tailwindcss";
 
-
-body{
+body {
   background-color: #333;
-}
-
-input,button{
-  padding: 10px 20px;
-  font-size: 8vw;
-  border:5px solid #fff;
-  margin-bottom: 4vh;
-  color:rgb(174, 195, 113)
-}
-button{
-  background-color: burlywood;
-  font-weight: 700;
-  color: black;
 }
